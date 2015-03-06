@@ -26,9 +26,6 @@ def pythTriple (a,b,c):
   else:
     return False
 
-
- 
-
 #PythTriple With No Ifs and Just Plain Return!
 def pythTriple(a,b,c):
     return (sumofSquares(a,b) == c**2 or
