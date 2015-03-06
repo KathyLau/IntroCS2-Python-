@@ -1,0 +1,36 @@
+;Kathy Lau
+;IntroCS2pd9
+;HW #12: Boolean Logic, Conditionals, Oh My
+;2015-03-06
+
+import math
+
+#cartDist
+def cartDist(x1,y1,x2,y2):
+  return int(math.sqrt((x1-x2)**2 + (y1-y2)**2))
+
+#SumSquares  (Defined from last HW!)
+def sumofSquares (a,b):
+   return a ** 2 + b ** 2
+
+#PythagTriple Using Ifs,Elifs, and Else
+def pythTriple (a,b,c):
+  if a <= 0 or b <= 0 or c <= 0:
+    return False
+  elif sumofSquares (a,b) == c ** 2:
+    return True
+  elif sumofSquares (b,c) == a ** 2:
+    return True
+  elif sumofSquares (a,c) == b ** 2:
+    return True
+  else:
+    return False
+
+
+ 
+
+#PythTriple With No Ifs and Just Plain Return!
+def pythTriple(a,b,c):
+    return (sumofSquares(a,b) == c**2 or
+            sumofSquares(a,c)== b**2 or
+            sumofSquares(b,c) == a**2) and (a>0 and b>0 and c>0)
