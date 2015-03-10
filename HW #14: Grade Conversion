@@ -1,0 +1,59 @@
+#Kathy Lau
+#IntroCS2 pd9
+#HW14: Letters & Numbers
+#2015-03-10
+
+
+#GRADE CONVERT
+def gradeConv(g):
+    if type(g) == type('str'):
+        return "Input a number plz"
+    elif g > 100 or g < 0:
+        return "N/A"
+    elif g >= 89.5:
+        return "A"
+    elif g >= 79.5:
+        return "B"
+    elif g >= 69.5:
+        return "C"
+    elif g >= 64.5:
+        return "D"
+    else:
+        return "F"
+
+#TEST CASES
+print gradeConv("A")
+print gradeConv(89.6) #should return A
+print gradeConv(101) #should return N/A
+print gradeConv(92) #should return A
+print gradeConv(89) #should return B
+print gradeConv(75) #should return C
+print gradeConv(65) #should return C
+print gradeConv(64) #should return F
+print gradeConv(0) #should return F
+print gradeConv(-100) #should return N/A
+
+
+#PASS JUDGEMENT
+def passJudgement(letterGrade):
+    if letterGrade == 'A':
+        return 'WOW'
+    elif letterGrade == 'B':
+        return 'Has potential to do better'
+    elif letterGrade == 'C':
+        return 'Try harder'
+    elif letterGrade == 'D':
+        return 'Pretty hopeless'
+    elif letterGrade == 'F':
+        return 'Transfer outta here'
+    else:
+        return "Error"
+
+#TEST CASES
+print passJudgement(95) #should return Error
+print passJudgement("A") #should print WOW
+print passJudgement("B") #should print Has potential to do better
+print passJudgement("C") #Should print Try harder
+print passJudgement("D") #Should return Pretty hopeless
+print passJudgement("F") #Should return Transfer Outta Here
+print passJudgement("N/A") #SHould return Error
