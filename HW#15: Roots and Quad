@@ -9,7 +9,8 @@ import math
 def disc(a,b,c):
     return b**2 - 4*a*c
       
-# numRealRoots takes numeric inputs a, b, c -- representing coefficients of a quadratic equation ;it returns the number of real roots of the equation.
+# numRealRoots takes numeric inputs a, b, c -- representing coefficients of a quadratic equation ;
+it returns the number of real roots of the equation.
 
 def numRealRoots(a,b,c):
     if disc(a,b,c) > 0:
