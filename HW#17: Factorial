@@ -1,0 +1,34 @@
+#Kathy Lau
+#IntroCS2 pd9
+#HW#17: Repetition, Two Ways
+#2015-03-12
+
+#factR(n) uses recursion to calculate and return n!.
+def factR(n):
+    if n > 1:
+        return n * (factR (n - 1))
+    else:
+        return 1
+
+ #test cases       
+print factR(0)
+print factR(1)
+print factR(2)
+print factR(3)
+print factR(4)
+
+#factW(n) uses iteration (in the form of a WHILE loop) to calculate and return n!.
+def factW(n):
+    newNum= 1
+    while n > 0:
+        newNum *= n
+        n -= 1
+    return newNum
+
+#test cases
+print factW(0)
+print factW(1)
+print factW(2)
+print factW(3)
+print factW(4)
+        
