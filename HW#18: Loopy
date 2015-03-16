@@ -1,0 +1,43 @@
+#Team Flow: Kathy, Gabriel, Emma
+#IntroCS2 pd9
+#Loopy
+#2015-03-13
+
+from math import * 
+
+#Sum of Digits--takes a positive integer n and returns the sum of its digits.
+
+def sumdigits(n):
+    retSum=0
+    while n> 0:
+        retsum += nC%10
+        n/= 10
+    return retSum
+
+
+#Squares (from 1 to n)--takes a positive integer n and prints each integer from 1 to n, inclusive, along with its square. 
+def squares(n):
+    x=1
+    while x<=n:
+        print x, x**2
+        x+=1
+
+#Squares(from n to 1)--takes a positive integer n and prints each integer from  n to 1 
+
+def squares2(n): 
+    while n>0: 
+        print n, n**2
+        n=n-1
+
+#sumPerfSqs--takes a positive integer n and returns the sum of the perfect squares between 1 and n, inclusive.
+def sumPerfSqs(n):
+    x = 1
+    total = 0
+    while x**2 <= n:
+        total = total + x**2
+        x = x+1
+    return total
+
+
+
+
