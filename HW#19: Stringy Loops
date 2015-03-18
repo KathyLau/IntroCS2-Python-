@@ -1,0 +1,36 @@
+# Kathy Lau
+# IntroCS2 pd9
+# HW19: Stringy Loops
+# 2015-03-17
+
+#addMultPrint
+def addMultPrint(a,b):
+   answer = "the sum of  %s  and %s is %s \ntheir product is %s"
+   print answer%(a,b,a+b,a*b)
+
+#addMultPrintHTML
+def addMultHTML(a,b):
+   answer="the <i> sum </i> of %s  and %s  is <b> %s </b><br> \ntheir <i> product </i> is <b> %s </b>"
+   return answer%(a,b,a+b,a*b)
+
+#sumDigits
+def sumDigits(n):
+    x= n%10
+    while n > 9:
+        n = n/10
+        x = x + n%10
+    return x
+
+#tablefy 
+def tablefy(n):
+   x=1
+   heading = "<table border='1'>\n\t<tr> <th>n</th> <th>n^2</th> <th>sumDigits</th> </tr>"
+   end = "\n</table>"
+   while x <= n:
+      data= "\n\t<tr><td> %s </td><td> %s </td><td> %s </td></tr>"%(x,x**2,sumDigits(x**2))
+      heading += data
+      x+=1
+   return heading + end
+
+#test case
+print tablefy(10)
