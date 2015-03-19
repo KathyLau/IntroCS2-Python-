@@ -1,0 +1,69 @@
+# Kathy Lau
+# IntroCS2 pd9
+# HW20: 000 000 111
+# 2015-03-17
+
+#bondify(name) takes a name written in First Last format, \and returns the sassy version.
+
+#bondify WAY ONE-
+def bondify(Name):
+    lastName=""
+    index = -1      #OR len(Name)-1, because len(name) is different from the index of the last char. 
+    while Name[index] != " ":
+        lastName= Name[index] + lastName    #eventually extracts the lastName
+        index -= 1                          
+    return lastName + ", " + Name
+
+##bondify WAY TWO-
+def bondify2(Name):
+    space = " "
+    index = 0
+    last = ""
+    while index < len (Name):
+        if Name[index] == space:
+            space = index
+        if index > space:
+            last += Name[index]
+        index += 1
+    last += ", " + Name
+    return last
+
+##bondify WAY THREE-BOOLEANS
+def bondify3(Name):
+    space = False 
+    index = 0
+    last = ""
+    while index < len (Name):
+        if Name[index] == " ": 
+            space = True 
+        if space: 
+            last += Name[index]
+        index += 1
+    last += ", " + Name
+    return last
+
+##bondify WAY FOUR-SLICE NOTATION
+def bondify4(Name):
+    y = 0
+    retStr = ""
+    while Name[y] != " ":
+        y +=1
+    retStr += Name[y:] + ", " + Name
+    return retStr
+
+##bondify WAY FIVE-FIND PRIMITIVE
+def bondify5(Name):
+    retStr = Name[Name.find(" ") + 1 : ] + ", " + Name
+    return retStr
+
+##bondify WAY SIX-SPLIT
+def bondify6(name):
+    first, last = name.split(" ")
+    return last + ", " + name
+
+print bondify("James Bond")#should return Bond, James Bond
+print bondify2("Kathy Lau")#should return Lau, Kathy Lau
+print bondify3("James Bond")#should return Bond, James Bond
+print bondify4("Kathy Lau")#should return Lau, Kathy Lau
+print bondify5("James Bond")#should return Bond, James Bond
+print bondify6("Kathy Lau")#should return Lau, Kathy Lau
