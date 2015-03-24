@@ -1,0 +1,44 @@
+# Kathy Lau
+# IntroCS2 pd 9
+# HW22: Slice, Dice, Replace
+#2015-03-19
+
+#tablefyASCII() returns a string of valid HTML code which will generate a 2-column, 53-row table.
+
+def upperCaseLetters():
+    retStr=""
+    retStr+="<table border>"
+    retStr+="\n\t<tr><th>Letter</th><th>Number</th></tr>"
+    x=65
+    while x <= 90:
+        retStr+="\n\t<tr><td> %s </td> <td> %s </td></tr>"%(chr(x), str(x))
+        x+=1
+    return retStr
+
+def lowerCaseLetters():
+    retStr2=""
+    x=97 
+    while x <= 122:
+        retStr2+="\n\t<tr><td> %s </td> <td> %s </td></tr>"%(chr(x), str(x))
+        x+=1
+    retStr2+="\n</table>"
+    return retStr2
+
+def tablefyASCII():
+    return upperCaseLetters() + lowerCaseLetters()
+
+
+#replace(s,q,r) takes 3 string inputs and replaces any occurrences of q in s with r. If there is no occurrence of q in s, then s is returned unchanged.
+
+def replace(s,q,r):
+    while s.find(q) != -1: 
+        pos = s.find(q) 
+        s = s[:pos] + r + s[pos + len(q):]
+    return s
+
+#test cases
+print replace("Winter is coming ", "Winter","Spring") #should return "Spring is coming"
+print replace("Dolphins run this planet", "dolphins", "mice")  #should return "Dolphins run this planet"
+
+
+
