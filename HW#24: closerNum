@@ -1,0 +1,20 @@
+#Kathy Lau
+#IntroCS2pd9
+#HW24: Reaching Out to the Neighbors
+#2015-03-23
+
+#closerNum operates on 3 numbers, returning a string stating which of the 2nd and 3rd arguments is closer to the first.
+
+def closerNum(target,num1,num2):
+    if abs(target-num1) < abs(target-num2):
+        return str(target) + " is closer to " +str(num1)
+    elif abs(target-num1) > abs(target-num2):
+        return str(target) + " is closer to " + str(num2)
+    else:
+        return str(target) +  ' is the same distance to both ' + str(num1) + ' and ' + str(num2)
+
+#test cases
+print closerNum(8,20,10)
+print closerNum(8,20,2)
+print closerNum(8,-2,30)
+print closerNum(8, 7, 7)
