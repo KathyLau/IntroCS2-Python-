@@ -1,0 +1,71 @@
+# Team BubbleTea -- Kathy Lau, Zhi Lin, Kevin Hwang
+# IntroCS2 pd9
+# HW25: Cereal-Grade Encryption
+# 2015-03-24
+
+#rot13 as shown in class
+def rot13(x):
+    if x.upper()==x:
+        offset = ord('A')
+    else:
+        offset=ord('a')
+    return chr((ord(x)+13-offset)%26+offset)
+
+#rot13 Character
+def rot13Chr (ch):
+    a=chr(ord(ch)+13)
+    b=chr(ord(ch)-13)
+    if 'A'<= ch <= 'Z':
+        if ch < 'N':
+            return a
+        else:
+            return b
+    elif 'a' <= ch <= 'z':
+        if ch < 'n':
+            return a
+        else:
+            return b
+    else:
+        return ch
+
+#test cases
+print rot13Chr2('B') #should return O
+print rot13Chr2('b') #should return o
+print rot13Chr2('Z') #should return M
+print rot13Chr2('z') #should return m
+print rot13Chr2(']') #should return ]
+print rot13Chr2('@') #should return @
+
+
+#printEmAll
+def printEmAll():
+    i=ord('A')
+    while i <= ord('z'):
+        print chr(i) + " <-> " + rot13Chr(chr(i))
+        i+=1
+        if i == ord('['):
+            i=ord('a')
+                    
+
+
+#rot13 Word
+def rot13Wrd(word):
+    x = 0
+    retStr = ''
+    while x < len(word):
+        retStr += rot13Chr(word[x])
+        x += 1
+    return retStr
+
+#way Two
+def rot13Wrd2(word):
+    string = ''
+    while len(word) > 0:
+        string += rot13Chr(word[0])
+        word = word[1:]
+    return string
+
+
+#test cases
+print rot13Wrd2('JABBERWOCKY') #should return "WNOOREJBPXL"
+print rot13Wrd ('Ze Oebja zber yvxr Ze Pybja')
