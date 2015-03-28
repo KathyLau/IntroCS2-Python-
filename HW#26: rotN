@@ -1,0 +1,63 @@
+# Team BubbleTea-- Kathy Lau, Zhi Lin, Kevin Hwang
+# IntroCS2 pd 9
+# HW26: Further Explorations in Toy_Encryption
+# 3/25/2015
+
+##Given the simple solution to find rot13 in class, we saw that we could
+##just replace 13 with a variable(n) as a parameter that converts the
+##character (c) and add a case if the input was not a character. Next, we wrote a
+##function to convert a phrase to any rot we would like, which was essentially the
+##same exact code for the rot13(phrase), except that it took two parameters instead
+##of one. Finally, we wrote a function that prints out all the possible words/phrases that
+##the strings could have rot to along with their rot number using a while loop!
+ 
+
+def rot13N(c,n):
+    if  'A' <=c <= 'Z':
+        offset=ord('A')
+    elif 'a' <=c <= 'z':
+        offset=ord('a')
+    else:
+        return c
+    return chr((ord(c)+ n-offset)%26 + offset)
+
+def rotNWrd(word, n):
+    ans = ""
+    x=0
+    while x<len(word):
+        ans += rot13N(word[x], n)
+        x +=1
+    return ans
+
+def rotDecode(s):
+    n=''
+    r=25
+    while r>0:
+        n+=rotNWrd(s,r)
+        print n + ', ' + str(r)
+        r-=1
+        n=''
+
+
+#DECODING
+        
+#rotDecode("deoh")
+#--> rot23 ; able
+
+#rotDecode("ufwyd")
+#--> rot21 ; party
+
+#rotDecode("udm")
+#--> rot11 ; fox
+
+#rotDecode("Cppkg ctg aqw QM?")
+#-->rot24; Annie are you OK?
+
+#rotDecode("Abzqdqvo nwz xmznmkbqwv mdmz aqvkm Q eia i avwbvwam")
+#--> rot18; Striving for perfection ever since I was a snotnose,
+
+#rotDecode("Apnly nva av obua, ipyk nva av msf; Thu nva av zpa huk dvukly, 'Dof, dof, dof?' Apnly nva av zsllw, ipyk nva av shuk; Thu nva av alss optzlsm ol buklyzahuk.")
+#-->rot19; Tiger got to hunt, bird got to fly; Man got to sit and wonder, 'Why, why, why?' Tiger got to sleep, bird got to land; Man got to tell himself he understand.
+
+#rotDecode("Roi! Roi ry! Cyzr-Pbycr CSXQ! tecd cdyvo dro cryg!")
+#--> rot16; Hey! Hey ho! Soph-Frosh SING! just stole the show!
