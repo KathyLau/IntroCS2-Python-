@@ -1,0 +1,51 @@
+# -*- coding: cp1252 -*-
+# Kathy Lau
+# IntroCs2 pd 9
+# HW
+# 2015-04-14
+
+#listSum(L) takes a list L containing only numbers, and returns the sum of L’s elements.
+def listSum(L):
+    sumL = 0
+    for i in L:
+        sumL+=i
+    return sumL
+
+print listSum( [0,1,2,3] ) #returns 6
+
+#minVal(L) takes a list L containing only numeric elements, and returns the least value.
+def minVal(L):
+    min_val=L[0]
+    for i in L:
+        if i< min_val:
+            min_val = i
+    return min_val
+
+print minVal( [5,4,3,2,1] ) #returns 1
+print minVal([3]) #returns 3
+
+
+#listFind(L,q) takes a list L and a query q as inputs, and returns the first index where q occurs in the L.
+#Returns -1 if q is not found in L.
+def listFind(L,q):
+    index=0
+    for i in L:
+        if i == q:
+            return index
+        index+=1
+    return -1
+
+print listFind([5,4,3,2,1], 2) #returns 3
+print listFind([5,4,3,2,1], 6) #returns -1
+print listFind([5,4,'cat','dog','cat'], 'cat')  #returns 2
+
+
+
+#minPos(L) takes a list L containing only numeric elements, and returns the position (index) of the least value.
+def minPos(L):
+    min_val=minVal(L)
+    return listFind(L, minVal(L))
+
+print minPos( [5,4,3,2,1] ) #returns 4
+print minPos([3]) #returns 0
+
