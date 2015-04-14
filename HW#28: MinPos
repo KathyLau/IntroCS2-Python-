@@ -1,0 +1,41 @@
+# Kathy Lau
+# IntroCS2 pd9
+# HW30: Float Like a Butterfly, Sting Like a Bee
+# 2015-03-31
+
+# minPos(L) takes a list L containing only numeric elements,
+#and returns the position (index) of the least value.
+def minPos(L):
+    return L.index(min(L))
+
+def minPos2(L):
+    i=0
+    min_value=L[i]
+    while i<len(L)-1:
+        if min_value>L[i+1]:
+            min_value=L[i+1]
+        i+=1
+    return min_value
+
+def minPos3(L):
+    i = 0
+    while L[i] != minPos2(L) :
+        i+=1
+    return i
+
+
+print minPos3([3]) #should return 0
+print minPos3([5,4,3,2,4]) #should return 4
+
+def minVal(L):
+    index=0
+    min_index=index
+    min_value=L[index]
+    while index < len(L):
+        if L[index] < min_value:
+                    min_index=index
+                    min_value=L[index]
+        index+=1
+    return min_index
+
+print minVal([5,4,3,2,1,9,8,7]) #should return 4
