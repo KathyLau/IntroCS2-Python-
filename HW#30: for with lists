@@ -37,7 +37,7 @@ def sentify(L):
     retStr=''
     for i in L:
         retStr+= i + " "
-    return retStr
+    return retStr[:-1]
 
 print sentify( ['this','is', 'how', 'we', 'do'] ) 
         
