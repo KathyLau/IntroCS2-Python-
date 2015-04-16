@@ -1,0 +1,36 @@
+# Kathy Lau
+# IntroCS2 pd9
+# hw34-:Stat-tastic
+# 2015-04-16
+
+#meanList(nums) returns the arithmetic mean of the numeric elements in list nums.
+def meanList(nums):
+    sumL=0
+    for i in nums:
+        sumL+=i
+    return sumL / len(nums)
+
+#medList(nums) returns the median of the numeric elements in list nums.
+def sort(L):
+    newL=[]
+    while len(L)>0:
+        newL.append(min(L))
+        L.remove(min(L))
+    return newL
+
+def medList(nums):
+   nums= sort(nums)
+   med=len(nums)/2
+   if len(nums) % 2:
+       return nums[len(nums)/2]
+   else:
+        return (nums[med] + nums[med-1])/2.0
+
+#barGraphify(nums) takes a list of non-negative integers and prints a horizontal bar for eachindex
+def barGraphify(nums):
+    i=0
+    for i in nums:
+        print str(i) + ':' + nums[i]*'=' +"\n"
+        i+=1
+ 
+barGraphify([0,1,2,3])
