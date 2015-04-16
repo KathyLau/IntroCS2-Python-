@@ -4,12 +4,12 @@
 
 def rmNegatives(L):
     index=0
-    for i in L:
-        if i < 0:
-            L = L[:index] + L[index+1:]
-            index-=1
-        index+=1
-    return L
+    while index < len(L):
+        if L[index] < 0:
+            L[index:] = L[index+1:]
+        else:
+            index+=1
+
 
 print rmNegatives( [5,4,3,2,1] )
 print rmNegatives( [5,-4,3,-2,1] ) 
