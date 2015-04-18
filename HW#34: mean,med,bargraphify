@@ -8,29 +8,46 @@ def meanList(nums):
     sumL=0
     for i in nums:
         sumL+=i
-    return sumL / len(nums)
+    return float(sumL) / len(nums)
+
+#test case
+print meanList([5.9,30,2,1]) #should return 9.9
+
 
 #medList(nums) returns the median of the numeric elements in list nums.
 def sort(L):
     newL=[]
-    while len(L)>0:
-        newL.append(min(L))
-        L.remove(min(L))
+    copy=L*1 #makes a copy of L so L won't be modified
+    while len(copy)>0:
+        newL.append(min(copy))
+        copy.remove(min(copy))
     return newL
 
 def medList(nums):
    nums= sort(nums)
    med=len(nums)/2
-   if len(nums) % 2:
+   if len(nums) % 2: #if it's odd 
        return nums[len(nums)/2]
    else:
         return (nums[med] + nums[med-1])/2.0
 
+#test case
+print medList([1,9.5,3.4,6.7,10,7.5])#should return 7.1
+
+
 #barGraphify(nums) takes a list of non-negative integers and prints a horizontal bar for eachindex
 def barGraphify(nums):
     i=0
-    for i in nums:
-        print str(i) + ':' + nums[i]*'=' +"\n"
+    while i < len(nums):
+        print str(i) + ':' + nums[i]*'='
         i+=1
- 
-barGraphify([0,1,2,3])
+
+#test case 
+barGraphify([1,0,3,2])
+"""
+should return
+0: =
+1:
+2: ===
+3: ==
+"""
