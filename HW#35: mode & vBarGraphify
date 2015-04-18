@@ -1,0 +1,97 @@
+# Kathy Lau
+# IntroCS2pd9
+# HW35: Stats on Stats on Stats
+# 2015-04-17
+
+# 1a. modeListA(nums) returns the mode, as a single number, of the set of numeric elements in list nums.
+
+##My approach was to append the frequency of each number
+##to a list. The max number in the list would be the mode.
+##Then you use the index method so you can return the
+##number at that position.
+
+
+def modeListA(nums):
+    freq=[] 
+    for i in nums:
+        freq.append(nums.count(i))  #appends freq. of each val to list freq
+    return nums[freq.index(max(freq))]  # returns number at the index of the highest freq.
+
+print modeListA( [0,5,7,3,2,3] ) #3
+print modeListA( [0,5,7,3,7,3] ) #7
+
+# 1b. modeListB(nums) returns the mode, as a list, of the set of numeric elements in list nums.
+
+##I stored the value of modeListA as the first mode value. Then
+##I compared the freq. value of each number in the list with
+##the freq. value of the first mode value and removed the non-mode
+##numbers. Once I had a list containing all the mode numbers, I used a
+##for loop to append one occurence of each mode number to a new list that
+##I would return.
+
+def modeListB(nums):
+    L=nums*1  #copy of list
+    x = modeListA(nums) #first mode value
+    i=0  #index/pos 
+    newL=[] 
+    while i < len(L):
+        if L.count(L[i])!=L.count(x):   #if freq. of num != to freq. of mode
+            L.remove(L[i])  #remove that num
+        else:
+            i+=1
+    i=0  #reset pos 
+    for i in L:
+        if newL.count(i) == 0:  #if mode num is not in newList yet:
+            newL.append(i)      #append that num
+    return sorted(newL)         
+
+# test case
+print modeListB( [0,5,2,7,2,7,3,3,2,7,3,3,7,2] )    #[2,3,7]         
+
+
+# vBarGraphify(nums) takes a list of non-negative integers and prints a set of vertical bars.  
+
+##First I set the number of rows as the counter. Then
+##I would loop over each number in the list.append If the number
+##was equal to or greater than the row_num, then an asterick would
+##be stored. Otherwise, a space will appear. After dealing w/ the astericks,
+##you can make a string of the index values at the bottom.
+
+def vBarGraphify(nums):
+    row_num=max(nums)
+    graph=''
+    index=0
+    while row_num > 0: 
+        for i in nums:
+            if i < row_num:    #if item in list is less than the max rows
+                graph+= '  '    #add space
+            else:
+                graph+='* '     #add asterick
+        graph+='\n'
+        row_num-=1             
+    while index < len(nums):    #adds the indexes at the bottom
+        graph+= str(index) + ' '
+        index+=1
+    print graph
+
+# test cases
+vBarGraphify([0,1,2,3])
+"""
+      * 
+    * * 
+  * * * 
+0 1 2 3
+"""
+vBarGraphify([1,0,2,3])
+"""
+      * 
+    * * 
+*   * * 
+0 1 2 3
+"""
+vBarGraphify([1,2,1,2])
+"""
+  *   * 
+* * * * 
+0 1 2 3
+"""
