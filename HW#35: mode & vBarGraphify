@@ -24,26 +24,17 @@ print modeListA( [0,5,7,3,7,3] ) #7
 
 ##I stored the value of modeListA as the first mode value. Then
 ##I compared the freq. value of each number in the list with
-##the freq. value of the first mode value and removed the non-mode
-##numbers. Once I had a list containing all the mode numbers, I used a
-##for loop to append one occurence of each mode number to a new list that
-##I would return.
+##the freq. value of the first mode value. As long as the mode
+##freq. value was the same and it's not in newL yet, it would be
+##appended.
 
 def modeListB(nums):
-    L=nums*1  #copy of list
-    x = modeListA(nums) #first mode value
-    i=0  #index/pos 
+    x = modeListA(nums) #first mode value 
     newL=[] 
-    while i < len(L):
-        if L.count(L[i])!=L.count(x):   #if freq. of num != to freq. of mode
-            del L[i]  #remove that num
-        else:
-            i+=1
-    i=0  #reset pos 
-    for i in L:
-        if newL.count(i) == 0:  #if mode num is not in newList yet:
-            newL.append(i)      #append that num
-    return sorted(newL)         
+    for i in nums:
+        if nums.count(i)==nums.count(x) and newL.count(i)==0:   #if freq. of num = to freq. of mode and its not in newL yet
+            newL.append(i)
+    return sorted(newL)     
 
 # test case
 print modeListB( [0,5,2,7,2,7,3,3,2,7,3,3,7,2] )    #[2,3,7]         
