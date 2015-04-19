@@ -36,7 +36,7 @@ def modeListB(nums):
     newL=[] 
     while i < len(L):
         if L.count(L[i])!=L.count(x):   #if freq. of num != to freq. of mode
-            L.remove(L[i])  #remove that num
+            del L[i]  #remove that num
         else:
             i+=1
     i=0  #reset pos 
