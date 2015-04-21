@@ -1,0 +1,79 @@
+# Kathy Lau
+# IntroCS2 pd 9
+# HW35 -- Bucket numsist
+# 2015-04-20
+
+
+# modeListB algorithm:
+#   1)  initialize bucket list of length highest element + 1, with all zeroes
+#         for each element
+#   2)  increment element in bucket list at that index
+#   3)  return all indexes of mode of bucket list using reigning champ method
+#         (basically a while loop to get at indices)
+
+#modeList A
+def modeListA(L):
+    pos = 0
+    newL=[]
+    buckets = (max(L)+1) * [0]
+    for x in L:
+        buckets[x] += 1
+    return buckets.index(max(buckets))
+
+#modeList B
+
+def modeListB(L):
+    pos = 0
+    newL=[ ]
+    bucketL = (max(L)+1) * [0]
+    for i in L:
+        bucketL[i] += 1
+    while pos < len(bucketL):
+        if bucketL[pos]==max(bucketL):
+            newL.append(pos)
+        pos+=1
+    return sorted(newL)
+
+#test case
+print modeListA([0,5,7,3,7,3]) #7
+print modeListB([0,5,7,3,7,3]) #[3,7]
+
+def vBarGraphify(L):
+    threshold=max(L)
+    graph=''
+    index=0
+    while threshold > 0: 
+        for i in L:
+            if i < threshold:    #if item in list is less than the max rows
+                graph+= '  '    #add space
+            else:
+                graph+= '*'     #add asterick
+        graph+='\n'
+        threshold-=1             
+    while index < len(L):    #adds the indexes at the bottom
+        graph+= str(index)
+        index+=1
+    print graph
+
+
+# test cases
+vBarGraphify([0,1,2,3])
+"""
+         * 
+      * * 
+   * * * 
+0 1 2 3
+"""
+vBarGraphify([1,0,2,3])
+"""
+         * 
+      * * 
+*    * * 
+0 1 2 3
+"""
+vBarGraphify([1,2,1,2])
+"""
+    *   * 
+* * * * 
+0 1 2 3
+"""
