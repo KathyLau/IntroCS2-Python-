@@ -8,8 +8,38 @@
 #   1)  initialize bucket list of length highest element + 1, with all zeroes
 #         for each element
 #   2)  increment element in bucket list at that index
-#   3)  return all indexes of mode of bucket list using reigning champ method
-#         (basically a while loop to get at indices)
+#   3)  return the index of the max. freq. of the bucketL
+
+#modeList with NEGATIVE numbers
+def modeList(nums):
+    pos = 0
+    newL=[]
+    offset=min(nums)
+    if offset < 0:
+        bucketL = (max(nums)+1 - offset) * [0] #to acc for negative indices
+    else:
+        bucketL=(max(nums)+1)*[0]
+    for x in nums:
+        if x >= 0:
+            bucketL[x] += 1
+        else:
+            bucketL[max(nums)- x] += 1 
+    if offset < 0 and max(bucketL)==bucketL[max(nums)-offset]:
+        return max(nums)+1- len(bucketL)
+    else:
+        return bucketL.index(max(bucketL))
+
+
+#test case
+print modeList([0,5,7,3,7,3]) #3
+print modeList([0,5,7,3,7,3]) #3 or 7
+print modeList([-5,2,3,4,-3,-3,-2,10,1,-5,1,-5,9]) # -5
+print modeList([5,6,5,4,9]) #5
+print modeList([8,-3,4,7,1,-3,1])#-3
+print modeList([1,-6,2,5,8,1])#1
+
+
+
 
 #modeList A
 def modeListA(L):
