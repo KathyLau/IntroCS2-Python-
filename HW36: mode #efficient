@@ -10,7 +10,6 @@
 #   2)  increment element in bucket list at that index
 #   3)  return the index of the max. freq. of the bucketL
 
-#modeList with NEGATIVE numbers
 def modeList(nums):
     pos = 0
     newL=[]
@@ -24,10 +23,12 @@ def modeList(nums):
             bucketL[x] += 1
         else:
             bucketL[max(nums)- x] += 1 
-    if offset < 0 and max(bucketL)==bucketL[max(nums)-offset]:
+    if offset < 0 and max(bucketL)==bucketL[max(nums)-offset]:  #if mode is negative and its the offset
         return max(nums)+1- len(bucketL)
-    else:
-        return bucketL.index(max(bucketL))
+    elif bucketL.index(max(bucketL))>max(nums):                 #if mode list has any negative numbers at all; or the smaler negative number, rather than the offset, is the mode
+            return max(nums)- bucketL.index(max(bucketL))
+    else:                                                       #if mode list is all positive
+           return bucketL.index(max(bucketL))
 
 
 #test case
@@ -37,8 +38,7 @@ print modeList([-5,2,3,4,-3,-3,-2,10,1,-5,1,-5,9]) # -5
 print modeList([5,6,5,4,9]) #5
 print modeList([8,-3,4,7,1,-3,1])#-3
 print modeList([1,-6,2,5,8,1])#1
-
-
+print modeList([-8,-4,1,3,-4,2,8])#-4
 
 
 #modeList A
