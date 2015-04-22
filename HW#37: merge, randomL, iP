@@ -56,8 +56,3 @@ def randIPFor():
     for i in range(4):
         IP+=str(random.randrange(256))+'.'
     return IP[:-1]
-
-
-
-
-print randIP()
