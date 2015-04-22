@@ -1,0 +1,46 @@
+# Kathy Lau
+# IntroCS2 pd9
+# HW #37: Oh, Give Me a Home Where the Buffalo Roam
+# 2015-04-21
+
+import random
+        
+def merge(L1,L2):
+    newL=[]
+    while len(L1)!=0 and len(L2)!=0:
+        if L1[0] < L2[0]:
+            newL.append(L1[0])
+            L1=L1[1:]
+        else:
+            newL.append(L2[0])
+            L2=L2[1:]
+    newL.extend(L1)
+    newL.extend(L2)
+    return newL
+
+print merge( [0, 2, 4, 6, 8],[1, 3, 5, 7]) #[0, 1, 2, 3, 4, 5, 6, 7, 8]
+
+
+def randListFor(n):
+    L=[]
+    for x in range(n):
+        L.append(random.randrange(256))
+    return L
+
+def randListWhile (n):
+    x = 0
+    L = []
+    while x < n:
+        L.append(random.randrange(256))
+        x += 1
+    return L
+
+
+
+def randIP():
+    IP=''
+    for i in randListFor(4):
+        IP+=str(i)+"."
+    return IP[:-1]
+
+print randIP()
